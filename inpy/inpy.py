@@ -48,7 +48,7 @@ def _gerar_codigo(estilo):
     return "\033[" + ";".join(codigos) + "m"
 
 
-def input(prompt="", style="white"):
+def input_color(prompt="", style="white"):
     texto = ""
     codigo = _gerar_codigo(style)
 
@@ -57,10 +57,14 @@ def input(prompt="", style="white"):
     while True:
         tecla = _ler_tecla()
 
-        if tecla == "\r":
+        if tecla == "\x03":  # Ctrl + C
+            print("^C")
+            raise KeyboardInterrupt
+
+        if tecla == "\r":  # Enter
             break
 
-        if tecla == "\x7f":  # backspace
+        if tecla == "\x7f":  # Backspace
             if texto:
                 texto = texto[:-1]
                 sys.stdout.write("\b \b")
