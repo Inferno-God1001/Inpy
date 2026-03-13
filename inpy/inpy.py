@@ -48,7 +48,7 @@ def _gerar_codigo(estilo):
     return "\033[" + ";".join(codigos) + "m"
 
 
-def input_color(prompt="", style="white"):
+def input(prompt="", style="white"):
     texto = ""
     codigo = _gerar_codigo(style)
 
