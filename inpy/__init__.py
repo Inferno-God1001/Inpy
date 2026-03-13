@@ -1,1 +1,1 @@
-from .cockroach import *
+from .inpy import *
