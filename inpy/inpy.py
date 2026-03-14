@@ -35,8 +35,8 @@ def _ler_tecla():
     return tecla
 
 
-def _gerar_codigo(estilo):
-    partes = estilo.lower().split()
+def _gerar_codigo(style):
+    partes = style.lower().split()
     codigos = []
 
     for p in partes:
@@ -45,10 +45,13 @@ def _gerar_codigo(estilo):
         elif p in ESTILOS:
             codigos.append(ESTILOS[p])
 
+    if not codigos:
+        return ""
+
     return "\033[" + ";".join(codigos) + "m"
 
 
-def input(prompt="", style="white"):
+def input(prompt="", style="white", hide=False):
     texto = ""
     codigo = _gerar_codigo(style)
 
@@ -57,7 +60,7 @@ def input(prompt="", style="white"):
     while True:
         tecla = _ler_tecla()
 
-        if tecla == "\x03":  # Ctrl + C
+        if tecla == "\x03":  # Ctrl+C
             print("^C")
             raise KeyboardInterrupt
 
@@ -72,7 +75,12 @@ def input(prompt="", style="white"):
             continue
 
         texto += tecla
-        sys.stdout.write(codigo + tecla + RESET)
+
+        if hide:
+            sys.stdout.write("*")
+        else:
+            sys.stdout.write(codigo + tecla + RESET)
+
         sys.stdout.flush()
 
     print()
