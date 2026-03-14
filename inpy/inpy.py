@@ -51,7 +51,7 @@ def _gerar_codigo(style):
     return "\033[" + ";".join(codigos) + "m"
 
 
-def input(prompt="", style="white", hide=False):
+def input(prompt="", style="white", hide=False, hide_full=False, hide_char="*"):
     texto = ""
     codigo = _gerar_codigo(style)
 
@@ -70,14 +70,17 @@ def input(prompt="", style="white", hide=False):
         if tecla == "\x7f":  # Backspace
             if texto:
                 texto = texto[:-1]
-                sys.stdout.write("\b \b")
-                sys.stdout.flush()
+                if not hide_full:
+                    sys.stdout.write("\b \b")
+                    sys.stdout.flush()
             continue
 
         texto += tecla
 
-        if hide:
-            sys.stdout.write("*")
+        if hide_full:
+            pass
+        elif hide:
+            sys.stdout.write(hide_char)
         else:
             sys.stdout.write(codigo + tecla + RESET)
 
