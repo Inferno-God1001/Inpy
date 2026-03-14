@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="inpy",
-    version="1.1.0",
+    version="1.1.1",
     description="Simple",
     author="Inferno-God1001",
     packages=find_packages(),
