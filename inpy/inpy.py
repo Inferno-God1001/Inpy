@@ -146,3 +146,227 @@ def input(
 
     print()
     return texto
+
+
+
+def help_input(language="pt"):
+
+    if language.lower() == "pt":
+
+        print("""
+================================
+ AJUDA DO INPUT AVANÇADO
+================================
+
+Função principal:
+
+input(
+    prompt="",
+    message_color="white",
+    color="white",
+    hide=False,
+    hide_full=False,
+    hide_char="*",
+    auto_enter_word=None,
+    accept="all",
+    allowed_chars=None,
+    max_chars=None,
+    reset_if_exceed=False,
+    lock_after_limit=False
+)
+
+--------------------------------
+PROMPT
+Texto mostrado antes do usuário digitar.
+
+Exemplo:
+input(prompt="Nome: ")
+
+--------------------------------
+CORES
+
+message_color = cor do prompt
+color = cor do texto digitado
+
+Cores disponíveis:
+
+black
+red
+green
+yellow
+blue
+magenta
+cyan
+white
+
+Exemplo:
+
+input(
+    prompt="Nome: ",
+    message_color="cyan",
+    color="yellow"
+)
+
+--------------------------------
+OCULTAR TEXTO
+
+hide=True
+Mostra * no lugar dos caracteres.
+
+hide_full=True
+Não mostra nada.
+
+--------------------------------
+TIPOS DE CARACTERES
+
+accept pode ser:
+
+all
+numbers
+letters
+alphanumeric
+chars
+
+--------------------------------
+CARACTERES ESPECÍFICOS
+
+allowed_chars="ABC123"
+
+--------------------------------
+LIMITE DE CARACTERES
+
+max_chars=5
+
+--------------------------------
+RESET AUTOMÁTICO
+
+reset_if_exceed=True
+
+Se passar do limite, o texto é apagado.
+
+--------------------------------
+BLOQUEAR APÓS LIMITE
+
+lock_after_limit=True
+
+Usuário precisa apagar manualmente.
+
+--------------------------------
+ENTER AUTOMÁTICO
+
+auto_enter_word="exit"
+
+Quando essa palavra aparece, o Enter acontece automaticamente.
+
+================================
+""")
+
+    else:
+
+        print("""
+================================
+ ADVANCED INPUT HELP
+================================
+
+Main function:
+
+input(
+    prompt="",
+    message_color="white",
+    color="white",
+    hide=False,
+    hide_full=False,
+    hide_char="*",
+    auto_enter_word=None,
+    accept="all",
+    allowed_chars=None,
+    max_chars=None,
+    reset_if_exceed=False,
+    lock_after_limit=False
+)
+
+--------------------------------
+PROMPT
+Text shown before the user types.
+
+Example:
+input(prompt="Name: ")
+
+--------------------------------
+COLORS
+
+message_color = prompt color
+color = typed text color
+
+Available colors:
+
+black
+red
+green
+yellow
+blue
+magenta
+cyan
+white
+
+Example:
+
+input(
+    prompt="Name: ",
+    message_color="cyan",
+    color="yellow"
+)
+
+--------------------------------
+HIDE TEXT
+
+hide=True
+Shows * instead of characters.
+
+hide_full=True
+Shows nothing.
+
+--------------------------------
+CHARACTER TYPES
+
+accept can be:
+
+all
+numbers
+letters
+alphanumeric
+chars
+
+--------------------------------
+SPECIFIC CHARACTERS
+
+allowed_chars="ABC123"
+
+--------------------------------
+CHARACTER LIMIT
+
+max_chars=5
+
+--------------------------------
+AUTO RESET
+
+reset_if_exceed=True
+
+If the limit is exceeded, the text is cleared.
+
+--------------------------------
+LOCK AFTER LIMIT
+
+lock_after_limit=True
+
+User must delete characters manually.
+
+--------------------------------
+AUTO ENTER
+
+auto_enter_word="exit"
+
+When this word appears, Enter happens automatically.
+
+================================
+""")
