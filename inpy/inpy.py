@@ -80,7 +80,11 @@ def input(
     hide_full=False,
     hide_char="*",
     auto_enter_word=None,
-    accept="all"
+    accept="all",
+    allowed_chars=None,
+    max_chars=None,
+    reset_if_exceed=False,
+    lock_after_limit=False
 ):
 
     texto = ""
@@ -93,14 +97,14 @@ def input(
     while True:
         tecla = _ler_tecla()
 
-        if tecla == "\x03":  # Ctrl+C
+        if tecla == "\x03":
             print("^C")
             raise KeyboardInterrupt
 
-        if tecla == "\r":  # Enter
+        if tecla == "\r":
             break
 
-        if tecla == "\x7f":  # Backspace
+        if tecla == "\x7f":
             if texto:
                 texto = texto[:-1]
                 if not hide_full:
@@ -110,6 +114,21 @@ def input(
 
         if not _permitido(tecla, accept):
             continue
+
+        if allowed_chars and tecla not in allowed_chars:
+            continue
+
+        if max_chars and len(texto) >= max_chars:
+
+            if reset_if_exceed:
+                while len(texto) > 0:
+                    sys.stdout.write("\b \b")
+                    texto = texto[:-1]
+                sys.stdout.flush()
+                continue
+
+            if lock_after_limit:
+                continue
 
         texto += tecla
 
