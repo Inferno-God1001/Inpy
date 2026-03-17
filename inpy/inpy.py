@@ -126,22 +126,6 @@ def input(
 
         texto += tecla
 
-        if auto_enter_word:
-            texto_check = texto.lower()
-            if isinstance(auto_enter_word, str):
-                palavras = [auto_enter_word]
-            else:
-                palavras = list(auto_enter_word)
-
-            triggered = False
-            for palavra in palavras:
-                if texto_check.endswith(str(palavra).lower()):
-                    triggered = True
-                    break
-
-            if triggered:
-                break
-
         if hide_full:
             pass
         elif hide:
@@ -150,6 +134,18 @@ def input(
             sys.stdout.write(codigo_texto + tecla + RESET)
 
         sys.stdout.flush()
+
+        if auto_enter_word:
+            texto_check = texto.lower()
+            if isinstance(auto_enter_word, str):
+                palavras = [auto_enter_word]
+            else:
+                palavras = list(auto_enter_word)
+
+            for palavra in palavras:
+                if texto_check.endswith(str(palavra).lower()):
+                    print()
+                    return texto
 
     print()
     return texto
