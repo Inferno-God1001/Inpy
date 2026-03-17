@@ -11,7 +11,16 @@ CORES = {
     "blue": "34",
     "magenta": "35",
     "cyan": "36",
-    "white": "37"
+    "white": "37",
+
+    "bright_black": "90",
+    "bright_red": "91",
+    "bright_green": "92",
+    "bright_yellow": "93",
+    "bright_blue": "94",
+    "bright_magenta": "95",
+    "bright_cyan": "96",
+    "bright_white": "97"
 }
 
 ESTILOS = {
@@ -37,6 +46,9 @@ def _ler_tecla():
 
 
 def _gerar_codigo(style):
+    if not style:
+        return ""
+
     partes = style.lower().split()
     codigos = []
 
@@ -74,8 +86,8 @@ def _permitido(tecla, modo):
 
 def input(
     prompt="",
-    message_color="white",
-    color="white",
+    message_color="bright_white",
+    color="bright_white",
     hide=False,
     hide_full=False,
     hide_char="*",
@@ -148,7 +160,6 @@ def input(
     return texto
 
 
-
 def help_input(language="pt"):
 
     if language.lower() == "pt":
@@ -158,105 +169,41 @@ def help_input(language="pt"):
  AJUDA DO INPUT AVANÇADO
 ================================
 
-Função principal:
-
-input(
-    prompt="",
-    message_color="white",
-    color="white",
-    hide=False,
-    hide_full=False,
-    hide_char="*",
-    auto_enter_word=None,
-    accept="all",
-    allowed_chars=None,
-    max_chars=None,
-    reset_if_exceed=False,
-    lock_after_limit=False
-)
-
---------------------------------
-PROMPT
-Texto mostrado antes do usuário digitar.
+DICA IMPORTANTE:
+Use "bright_white" para branco real.
 
 Exemplo:
-input(prompt="Nome: ")
+message_color="bright_white bold"
 
 --------------------------------
-CORES
+CORES DISPONÍVEIS:
 
-message_color = cor do prompt
-color = cor do texto digitado
+black, red, green, yellow, blue,
+magenta, cyan, white
 
-Cores disponíveis:
+BRIGHT:
+bright_black, bright_red, bright_green,
+bright_yellow, bright_blue,
+bright_magenta, bright_cyan,
+bright_white
 
-black
-red
-green
-yellow
-blue
-magenta
-cyan
-white
+--------------------------------
+ESTILOS:
 
-Exemplo:
+bold
+underline
+reverse
+
+--------------------------------
+EXEMPLO COMPLETO:
 
 input(
-    prompt="Nome: ",
-    message_color="cyan",
-    color="yellow"
+    prompt="Senha: ",
+    message_color="bright_white bold",
+    color="bright_cyan",
+    hide=True,
+    max_chars=8
 )
-
---------------------------------
-OCULTAR TEXTO
-
-hide=True
-Mostra * no lugar dos caracteres.
-
-hide_full=True
-Não mostra nada.
-
---------------------------------
-TIPOS DE CARACTERES
-
-accept pode ser:
-
-all
-numbers
-letters
-alphanumeric
-chars
-
---------------------------------
-CARACTERES ESPECÍFICOS
-
-allowed_chars="ABC123"
-
---------------------------------
-LIMITE DE CARACTERES
-
-max_chars=5
-
---------------------------------
-RESET AUTOMÁTICO
-
-reset_if_exceed=True
-
-Se passar do limite, o texto é apagado.
-
---------------------------------
-BLOQUEAR APÓS LIMITE
-
-lock_after_limit=True
-
-Usuário precisa apagar manualmente.
-
---------------------------------
-ENTER AUTOMÁTICO
-
-auto_enter_word="exit"
-
-Quando essa palavra aparece, o Enter acontece automaticamente.
 
 ================================
 """)
@@ -268,105 +215,41 @@ Quando essa palavra aparece, o Enter acontece automaticamente.
  ADVANCED INPUT HELP
 ================================
 
-Main function:
-
-input(
-    prompt="",
-    message_color="white",
-    color="white",
-    hide=False,
-    hide_full=False,
-    hide_char="*",
-    auto_enter_word=None,
-    accept="all",
-    allowed_chars=None,
-    max_chars=None,
-    reset_if_exceed=False,
-    lock_after_limit=False
-)
-
---------------------------------
-PROMPT
-Text shown before the user types.
+IMPORTANT TIP:
+Use "bright_white" for true white.
 
 Example:
-input(prompt="Name: ")
+message_color="bright_white bold"
 
 --------------------------------
-COLORS
+AVAILABLE COLORS:
 
-message_color = prompt color
-color = typed text color
+black, red, green, yellow, blue,
+magenta, cyan, white
 
-Available colors:
+BRIGHT:
+bright_black, bright_red, bright_green,
+bright_yellow, bright_blue,
+bright_magenta, bright_cyan,
+bright_white
 
-black
-red
-green
-yellow
-blue
-magenta
-cyan
-white
+--------------------------------
+STYLES:
 
-Example:
+bold
+underline
+reverse
+
+--------------------------------
+FULL EXAMPLE:
 
 input(
-    prompt="Name: ",
-    message_color="cyan",
-    color="yellow"
+    prompt="Password: ",
+    message_color="bright_white bold",
+    color="bright_cyan",
+    hide=True,
+    max_chars=8
 )
-
---------------------------------
-HIDE TEXT
-
-hide=True
-Shows * instead of characters.
-
-hide_full=True
-Shows nothing.
-
---------------------------------
-CHARACTER TYPES
-
-accept can be:
-
-all
-numbers
-letters
-alphanumeric
-chars
-
---------------------------------
-SPECIFIC CHARACTERS
-
-allowed_chars="ABC123"
-
---------------------------------
-CHARACTER LIMIT
-
-max_chars=5
-
---------------------------------
-AUTO RESET
-
-reset_if_exceed=True
-
-If the limit is exceeded, the text is cleared.
-
---------------------------------
-LOCK AFTER LIMIT
-
-lock_after_limit=True
-
-User must delete characters manually.
-
---------------------------------
-AUTO ENTER
-
-auto_enter_word="exit"
-
-When this word appears, Enter happens automatically.
 
 ================================
 """)
